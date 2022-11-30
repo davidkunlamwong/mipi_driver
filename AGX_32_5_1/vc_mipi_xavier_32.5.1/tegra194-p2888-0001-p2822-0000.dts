@@ -1,0 +1,106 @@
+/*
+ * Top level DTS file for CVM:P2888-0001 and CVB:P2822-0000.
+ *
+ * Copyright (c) 2017-2019, NVIDIA CORPORATION.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 2 of the License.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ */
+
+#define VC_MIPI     1   /* CCC - Enable VC MIPI driver(s) */
+
+// Enable 1 driver only !
+#define VC_MIPI_OV9281          0   /* CCC - Enable VC MIPI OV9281 driver                */
+#define VC_MIPI_IMX183          0   /* CCC - Enable VC MIPI IMX183 driver (mono)         */
+#define VC_MIPI_IMX183C         0   /* CCC - Enable VC MIPI IMX183 driver (color)        */
+#define VC_MIPI_IMX183_QUAD_J20 0   /* CCC - Enable VC MIPI quad IMX183 mono - J20 connectors J2-J5 */
+#define VC_MIPI_IMX226          0   /* CCC - Enable VC MIPI IMX226 driver (mono)         */
+#define VC_MIPI_IMX226C         0   /* CCC - Enable VC MIPI IMX226 driver (color)        */
+#define VC_MIPI_IMX250          0   /* CCC - Enable VC MIPI IMX250 driver (mono)         */
+#define VC_MIPI_IMX250C         0   /* CCC - Enable VC MIPI IMX250 driver (color)        */
+#define VC_MIPI_IMX252          0   /* CCC - Enable VC MIPI IMX252 driver (mono)         */
+#define VC_MIPI_IMX252C         0   /* CCC - Enable VC MIPI IMX252 driver (color)        */
+#define VC_MIPI_IMX273          0   /* CCC - Enable VC MIPI IMX273 driver (mono)         */
+#define VC_MIPI_IMX273C         0   /* CCC - Enable VC MIPI IMX273 driver (color)        */
+#define VC_MIPI_IMX290          0   /* CCC - Enable VC MIPI IMX290 driver (mono)         */
+#define VC_MIPI_IMX290C         0   /* CCC - Enable VC MIPI IMX290 driver (color)        */
+#define VC_MIPI_IMX296          0   /* CCC - Enable VC MIPI IMX296/297 driver (mono)     */
+#define VC_MIPI_IMX296C         0   /* CCC - Enable VC MIPI IMX296C/297C driver (color)  */
+#define VC_MIPI_IMX327C         0   /* CCC - Enable VC MIPI IMX327C driver               */
+#define VC_MIPI_IMX392          1   /* CCC - Enable VC MIPI IMX392 driver (mono)         */
+#define VC_MIPI_IMX392C         0   /* CCC - Enable VC MIPI IMX392 driver (color)        */
+#define VC_MIPI_IMX412          0   /* CCC - Enable VC MIPI IMX412 driver                */
+#define VC_MIPI_IMX415          0   /* CCC - Enable VC MIPI IMX415 driver                */
+
+//#define VC_MIPI_IMX183_DUAL_HEX 0   /* CCC - Enable VC MIPI dual IMX183 mono - Hexagon adapater connectors 2,1 (i2c-30,31) */
+//#define VC_MIPI_IMX290C_J3      0   /* CCC - Enable VC MIPI IMX290 driver (color) J20-J3 connector */
+
+#include "common/tegra194-p2888-0001-p2822-0000-common.dtsi"
+
+#if VC_MIPI
+//  #include <t19x-common-modules/j20.dtsi>
+//  #include <t19x-common-modules/ov5693.dtsi>
+
+#if VC_MIPI_OV9281
+    #include <t19x-common-modules/ov9281.dtsi>
+#elif VC_MIPI_IMX183
+  #include <t19x-common-modules/imx183.dtsi>            // IMX183 mono  - J20 J2 connector
+#elif VC_MIPI_IMX183C
+  #include <t19x-common-modules/imx183c.dtsi>           // IMX183 color - J20 J2 connector
+#elif VC_MIPI_IMX183_QUAD_J20
+  #include <t19x-common-modules/imx183_quad_j20.dtsi>   // quad IMX183 mono - J20 connectors J2-J5
+//#elif VC_MIPI_IMX183_DUAL_HEX
+//  #include <t19x-common-modules/imx183_dual_hex.dtsi>   // dual IMX183 mono -  Hexagon adapater connectors 2,1 (i2c-30,31)
+////  #include "common/tegra194-p2822-camera-modules.dtsi"
+//  #include "t19x-common-modules/tegra194-camera-plugin-manager.dtsi"
+#elif VC_MIPI_IMX226
+  #include <t19x-common-modules/imx226.dtsi>      // IMX226 mono
+#elif VC_MIPI_IMX226C
+  #include <t19x-common-modules/imx226c.dtsi>     // IMX226 color
+#elif VC_MIPI_IMX250
+  #include <t19x-common-modules/imx250.dtsi>      // IMX250 mono
+#elif VC_MIPI_IMX250C
+  #include <t19x-common-modules/imx250c.dtsi>     // IMX250 color
+#elif VC_MIPI_IMX252
+  #include <t19x-common-modules/imx252.dtsi>      // IMX252 mono
+#elif VC_MIPI_IMX252C
+  #include <t19x-common-modules/imx252c.dtsi>     // IMX252 color
+#elif VC_MIPI_IMX273
+  #include <t19x-common-modules/imx273.dtsi>      // IMX273 mono
+#elif VC_MIPI_IMX273C
+  #include <t19x-common-modules/imx273c.dtsi>     // IMX273 color
+#elif VC_MIPI_IMX290
+  #include <t19x-common-modules/imx290.dtsi>      // IMX290 mono
+#elif VC_MIPI_IMX290C
+  #include <t19x-common-modules/imx290c.dtsi>     // IMX290 color
+//#elif VC_MIPI_IMX290C_J3
+//  #include <t19x-common-modules/imx290c_j3.dtsi>  // IMX290 color - J20 J3 connector
+#elif VC_MIPI_IMX296
+  #include <t19x-common-modules/imx296.dtsi>      // IMX296 and IMX297 mono
+#elif VC_MIPI_IMX296C
+  #include <t19x-common-modules/imx296c.dtsi>     // IMX296 and IMX297 color
+#elif VC_MIPI_IMX327C
+  #include <t19x-common-modules/imx327c.dtsi>
+#elif VC_MIPI_IMX392
+  #include <t19x-common-modules/imx392.dtsi>
+ #elif VC_MIPI_IMX392C
+  #include <t19x-common-modules/imx392c.dtsi>
+#elif VC_MIPI_IMX412
+  #include <t19x-common-modules/imx412.dtsi>
+#elif VC_MIPI_IMX415
+  #include <t19x-common-modules/imx415.dtsi>
+#endif
+
+//   #include <t19x-common-modules/vc_mipi1_uni.dtsi>   // Universal driver - 1 lane
+//   #include <t19x-common-modules/vc_mipi2_uni.dtsi>   // Universal driver - 2 lanes
+
+#else
+  #include "common/tegra194-p2822-camera-modules.dtsi"
+  #include "t19x-common-modules/tegra194-camera-plugin-manager.dtsi"
+#endif
